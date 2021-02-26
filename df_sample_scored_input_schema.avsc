@@ -1,0 +1,209 @@
+[
+    {
+        "type": "int",
+        "data_class": "numerical",
+        "role": "non-predictor",
+        "protected_class": false,
+        "drift_candidate": false,
+        "special_values": [],
+        "name": "id"
+    },
+    {
+        "type": "int",
+        "data_class": "numerical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "duration_months"
+    },
+    {
+        "type": "float",
+        "data_class": "numerical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "credit_amount"
+    },
+    {
+        "type": "int",
+        "data_class": "numerical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "installment_rate"
+    },
+    {
+        "type": "int",
+        "data_class": "numerical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "present_residence_since"
+    },
+    {
+        "type": "int",
+        "data_class": "numerical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "age_years"
+    },
+    {
+        "type": "int",
+        "data_class": "numerical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "number_existing_credits"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "checking_status"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "credit_history"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "purpose"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "savings_account"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "present_employment_since"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "debtors_guarantors"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "property"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "installment_plans"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "housing"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "job"
+    },
+    {
+        "type": "int",
+        "data_class": "numerical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "number_people_liable"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "telephone"
+    },
+    {
+        "type": "boolean",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "foreign_worker"
+    },
+    {
+        "type": "string",
+        "data_class": "categorical",
+        "role": "predictor",
+        "protected_class": true,
+        "drift_candidate": false,
+        "special_values": [],
+        "name": "gender"
+    },
+    {
+        "type": "int",
+        "data_class": "numerical",
+        "role": "label",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "label_value"
+    },
+    {
+        "type": "int",
+        "data_class": "numerical",
+        "role": "score",
+        "protected_class": false,
+        "drift_candidate": true,
+        "special_values": [],
+        "name": "score"
+    }
+]
