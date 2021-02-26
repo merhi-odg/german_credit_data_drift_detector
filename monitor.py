@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import json
 import pickle
-from moc_monitors import BiasMonitor, DriftDetector
+from moc_monitors import DriftDetector
 from moc_schema_infer import set_detector_parameters
 
 
@@ -52,19 +52,5 @@ def metrics(data):
         pre_defined_metric='jensen-shannon',
         user_defined_metric=None
     )
-    
-    
-    bias_montior = BiasMonitor(
-        df=data,
-        score_column=detector_parameters["score_column"][0],
-        label_column=detector_parameters["label_column"][0],
-        protected_class='gender',
-        reference_group='male'
-    )
-    
-    output = bias_montior.compute_bias_metrics(
-        pre_defined_metric='aequitas_bias',
-        user_defined_metric=None,
-    ).to_dict(orient='records')
     
     yield output
