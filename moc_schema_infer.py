@@ -21,9 +21,9 @@ def dtype_map(dtype):
         return None
 
 
-def data_class_map(data_type):
+def dataClass_map(data_type):
     """
-    Map Avro types to data_class (numerocal vs categorical)
+    Map Avro types to dataClass (numerocal vs categorical)
 
     param: data_type: Avro data type
     return: numerical vs categorical
@@ -58,10 +58,10 @@ def role_map(field_name):
 # Expanded Schema metadata
 metadata_values = {
     'type': ['int', 'float', 'string', 'boolean', None],
-    'data_class': ['numerical', 'categorical', None],
+    'dataClass': ['numerical', 'categorical', None],
     'role': ['label', 'score', 'predictor', 'non-predictor'],
-    'protected_class': [True, False, 0, 1],
-    'drift_candidate': [True, False, 0, 1]
+    'protectedClass': [True, False, 0, 1],
+    'driftCandidate': [True, False, 0, 1]
 }
 
 
@@ -96,11 +96,11 @@ def infer_schema(
             {
                 'name': field,
                 'type': field_type,
-                'data_class': data_class_map(field_type),
+                'dataClass': dataClass_map(field_type),
                 'role': role_map(field),
-                'protected_class': False,
-                'drift_candidate': True,
-                'special_values': []
+                'protectedClass': False,
+                'driftCandidate': True,
+                'specialValues': []
             }
         )
 
@@ -117,10 +117,10 @@ def validate_schema(dataframe):
     for field in dataframe.index:
         for metadata in [
             'type', 
-            'data_class', 
+            'dataClass', 
             'role', 
-            'protected_class', 
-            'drift_candidate']:
+            'protectedClass', 
+            'driftCandidate']:
 
             if dataframe.loc[field, metadata] not in metadata_values[metadata]:
                 print('{} = {} not in {}'.format(
@@ -150,11 +150,11 @@ def set_detector_parameters(schema_df):
 
         for field in schema_df.index.values:
 
-            if schema_df.loc[field, 'drift_candidate']==True:
+            if schema_df.loc[field, 'driftCandidate']==True:
 
-                if schema_df.loc[field, 'data_class']=='categorical':
+                if schema_df.loc[field, 'dataClass']=='categorical':
                     categorical_columns.append(field)
-                elif schema_df.loc[field, 'data_class']=='numerical':
+                elif schema_df.loc[field, 'dataClass']=='numerical':
                     numeric_columns.append(field)
             
             if schema_df.loc[field, 'role']=='score':
