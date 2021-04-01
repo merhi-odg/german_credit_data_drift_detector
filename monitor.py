@@ -11,7 +11,7 @@ def begin():
 
     global schema
     
-    #Read schema
+    # Read schema
     schema = pd.read_json(
         'df_sample_scored_input_schema.avsc',
         orient='records'
@@ -21,36 +21,57 @@ def begin():
 
     
 # modelop.metrics
-def metrics(data):
+def metrics(data, slot_no):
     
-    df_baseline = pd.read_json('df_baseline_scored.json', orient='records', lines=True)
+    global sample_df, baseline_df
     
-    #if 'label_value' in df_baseline.columns and 'label' not in df_baseline.columns:
-    #    df_baseline.rename(
-    #        columns={'label_value': 'label'},
-    #        inplace=True
-    #    )
+    # print("\ndata: ", data, flush=True)
+    print("\nSlot number: ", slot_no, flush=True)
     
-    print(df_baseline.columns, flush=True)
+    if slot_no==0:
+        
+        sample_df = data.copy()
+        sample_df = pd.DataFrame(sample_df)
+        
+        print("\nbaseline_df: ", baseline_df, flush=True)
+        print("\nsample_df: ", sample_df, flush=True)
+        print("\ntype(sample_df): ", type(sample_df), flush=True)
+
+    if slot_no==2:
+        
+        baseline_df = data.copy()
+        baseline_df = pd.DataFrame(baseline_df)
+        
+        print("\nbaseline_df: ", baseline_df, flush=True)
+        print("\ntype(baseline_df): ", type(baseline_df), flush=True)
+        print("\nsample_df: ", sample_df, flush=True)
+        
+        
+    if baseline_df is not None and sample_df is not None:
+        
+        print("\nYielding", flush=True)
+        
+        detector_parameters = set_detector_parameters(schema)
     
-    print('',flush=True)
+        drift_detector=DriftDetector(
+            df_baseline=baseline_df, 
+            df_sample=sample_df, 
+            categorical_columns=detector_parameters["categorical_columns"], 
+            numerical_columns=detector_parameters["numerical_columns"], 
+            score_column=detector_parameters["score_column"][0], 
+            label_column=detector_parameters["label_column"][0]
+        )
+
+        output = drift_detector.calculate_drift(
+            pre_defined_metric='jensen-shannon',
+            user_defined_metric=None
+        )
+
+        yield output
+
+    else:
+        print("\nReturning\n", flush=True)
+        return
     
-    print(data.columns, flush=True)
     
-    detector_parameters = set_detector_parameters(schema)
     
-    drift_detector=DriftDetector(
-        df_baseline=df_baseline, 
-        df_sample=data, 
-        categorical_columns=detector_parameters["categorical_columns"], 
-        numerical_columns=detector_parameters["numerical_columns"], 
-        score_column=detector_parameters["score_column"][0], 
-        label_column=detector_parameters["label_column"][0]
-    )
-    
-    output = drift_detector.calculate_drift(
-        pre_defined_metric='jensen-shannon',
-        user_defined_metric=None
-    )
-    
-    yield output
