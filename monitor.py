@@ -15,6 +15,10 @@ from moc_schema_infer import set_detector_parameters
 def begin():
 
     global schema
+    global baseline_df, sample_df
+    
+    baseline_df = None
+    sample_df = None    
     
     # Read schema
     schema = pd.read_json(
