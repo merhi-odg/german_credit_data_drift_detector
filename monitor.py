@@ -1,3 +1,8 @@
+# modelop.slot.0:in-use
+# modelop.slot.1:in-use
+# modelop.slot.2:in-use
+
+
 import pandas as pd
 import numpy as np
 import json
